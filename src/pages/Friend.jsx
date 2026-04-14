@@ -7,13 +7,33 @@ import {
   TrashIcon,
   VideoCameraIcon,
 } from "@phosphor-icons/react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import SummaryCard from "../components/SummaryCard";
+import useMainContext from "../hooks/useMainContext";
+import toast from "react-hot-toast";
 
 const Friend = () => {
   const data = useLoaderData();
+  const { timeline, setTimeline } = useMainContext();
 
   // TODO: Add on page load scroll to top
+
+  // Functions
+  const addToTimeline = (id, type, name, date) => {
+    setTimeline((prev) => [
+      {
+        id,
+        type,
+        name,
+        date,
+      },
+      ...prev,
+    ]);
+
+    toast.success(
+      `Added to timeline: ${type?.slice(0, 1)?.toUpperCase()}${type?.slice(1)} with ${name}`,
+    );
+  };
 
   return (
     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5 -mt-5">
@@ -46,10 +66,9 @@ const Friend = () => {
           <span className="text-neutral/50 font-medium text-sm italic">
             "{data?.bio}"
           </span>
-          <span className="text-neutral/50 text-sm">
-            Preferred: email
-            {/* TODO */}
-          </span>
+          <a href={`mailto:${data?.email}`} className="text-neutral/50 text-sm">
+            {data?.email}
+          </a>
         </div>
 
         {/* Buttons */}
@@ -105,15 +124,45 @@ const Friend = () => {
           </h4>
 
           <div className="grid grid-cols-3 gap-3">
-            <button className="border border-base-300/50 bg-base-200 px-3 py-4 w-full rounded-md flex flex-col gap-1.5 items-center justify-center text-neutral cursor-pointer hover:shadow-md transition-all duration-150 active:shadow-none">
+            <button
+              onClick={() =>
+                addToTimeline(
+                  data?.id,
+                  "call",
+                  data?.name,
+                  new Date().toISOString(),
+                )
+              }
+              className="border border-base-300/50 bg-base-200 px-3 py-4 w-full rounded-md flex flex-col gap-1.5 items-center justify-center text-neutral cursor-pointer hover:shadow-md transition-all duration-150 active:shadow-none"
+            >
               <PhoneCallIcon weight="bold" size={30} /> Call
             </button>
 
-            <button className="border border-base-300/50 bg-base-200 px-3 py-4 w-full rounded-md flex flex-col gap-1.5 items-center justify-center text-neutral cursor-pointer hover:shadow-md transition-all duration-150 active:shadow-none">
+            <button
+              onClick={() =>
+                addToTimeline(
+                  data?.id,
+                  "text",
+                  data?.name,
+                  new Date().toISOString(),
+                )
+              }
+              className="border border-base-300/50 bg-base-200 px-3 py-4 w-full rounded-md flex flex-col gap-1.5 items-center justify-center text-neutral cursor-pointer hover:shadow-md transition-all duration-150 active:shadow-none"
+            >
               <ChatDotsIcon weight="bold" size={30} /> Text
             </button>
 
-            <button className="border border-base-300/50 bg-base-200 px-3 py-4 w-full rounded-md flex flex-col gap-1.5 items-center justify-center text-neutral cursor-pointer hover:shadow-md transition-all duration-150 active:shadow-none">
+            <button
+              onClick={() =>
+                addToTimeline(
+                  data?.id,
+                  "video",
+                  data?.name,
+                  new Date().toISOString(),
+                )
+              }
+              className="border border-base-300/50 bg-base-200 px-3 py-4 w-full rounded-md flex flex-col gap-1.5 items-center justify-center text-neutral cursor-pointer hover:shadow-md transition-all duration-150 active:shadow-none"
+            >
               <VideoCameraIcon weight="bold" size={30} /> Video
             </button>
           </div>
@@ -125,25 +174,42 @@ const Friend = () => {
               Recent Interactions
             </h4>
 
-            <button className="btn border border-base-300">
+            <Link to="/timeline" className="btn border border-base-300">
               <ClockCounterClockwiseIcon /> Full History
-            </button>
+            </Link>
           </div>
 
           <div className="w-full flex flex-col gap-0">
-            <div className="w-full flex items-center justify-between gap-2 px-3 py-4 border-b last:border-b-none border-neutral/10 text-neutral">
-              <div className="flex items-center gap-2">
-                <ChatDotsIcon size={30} weight="bold" />
-                <span className="text-lg font-normal">Text</span>
-              </div>
-              <span>
-                {new Date().toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
+            {timeline
+              ?.filter((item) => item?.id === data?.id)
+              ?.map((item, index) => (
+                <div
+                  key={`${index}_${item?.id}`}
+                  className="w-full flex items-center justify-between gap-2 px-3 py-4 border-b border-neutral/10 last:border-b-0  text-neutral"
+                >
+                  <div className="flex items-center gap-2">
+                    {item?.type === "call" ? (
+                      <PhoneCallIcon size={30} weight="bold" />
+                    ) : item?.type === "text" ? (
+                      <ChatDotsIcon size={30} weight="bold" />
+                    ) : (
+                      <VideoCameraIcon size={30} weight="bold" />
+                    )}
+
+                    <span className="text-lg font-normal">
+                      {item?.type?.slice(0, 1)?.toUpperCase()}
+                      {item?.type?.slice(1)} with {item?.name}
+                    </span>
+                  </div>
+                  <span>
+                    {new Date(item?.date).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </span>
+                </div>
+              ))}
           </div>
         </div>
       </section>

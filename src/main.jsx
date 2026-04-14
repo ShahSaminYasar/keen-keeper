@@ -8,6 +8,8 @@ import Timeline from "./pages/Timeline";
 import Stats from "./pages/Stats";
 import NotFound from "./components/NotFound";
 import Friend from "./pages/Friend";
+import MainProvider from "./providers/MainProvider";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <MainProvider>
+      <Toaster />
+      <RouterProvider router={router} />
+    </MainProvider>
   </StrictMode>,
 );
