@@ -1,5 +1,6 @@
 import { use } from "react";
 import FriendCard from "../components/FriendCard";
+import { Link } from "react-router";
 
 const Friends = ({ friendsPromise }) => {
   const data = use(friendsPromise);
@@ -10,7 +11,9 @@ const Friends = ({ friendsPromise }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {data?.map((friend) => (
-          <FriendCard key={friend?.id} data={friend} />
+          <Link key={friend?.id} to={`/friend/${friend?.id}`}>
+            <FriendCard data={friend} />
+          </Link>
         ))}
       </div>
     </section>

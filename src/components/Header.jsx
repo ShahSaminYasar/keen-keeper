@@ -4,7 +4,7 @@ import { NavLink } from "react-router";
 const Header = () => {
   return (
     <header className="w-full bg-base-100 px-3 py-2 h-20 flex items-center border-b border-base-300">
-      <div className="w-full max-w-7xl mx-auto flex items-center gap-3 justify-between">
+      <div className="w-full max-w-375 mx-auto flex items-center gap-3 justify-between">
         <img src="/assets/logo.png" alt="Keen Keeper" className="w-50" />
 
         <nav>

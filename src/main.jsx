@@ -27,7 +27,15 @@ const router = createBrowserRouter([
         Component: Stats,
       },
       {
-        path: ":id",
+        path: "friend/:id",
+        loader: async ({ params }) => {
+          return fetch("/friends.json")
+            .then((res) => res.json())
+            .then(
+              (data) =>
+                data?.find((item) => item?.id === parseInt(params?.id)) || {},
+            );
+        },
         Component: Friend,
       },
     ],
