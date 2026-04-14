@@ -2,9 +2,7 @@ import { PlusIcon } from "@phosphor-icons/react";
 import { Suspense } from "react";
 import SummaryCards from "../components/SummaryCards";
 
-const Hero = () => {
-  const summaryPromise = fetch("/friends.json").then((res) => res.json());
-
+const Hero = ({ friendsPromise }) => {
   return (
     <section className="w-full flex flex-col items-center justify-center text-center gap-5">
       <h1 className="text-5xl font-bold text-neutral">
@@ -27,7 +25,7 @@ const Hero = () => {
           </div>
         }
       >
-        <SummaryCards summaryPromise={summaryPromise} />
+        <SummaryCards summaryPromise={friendsPromise} />
       </Suspense>
     </section>
   );
