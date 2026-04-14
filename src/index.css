@@ -7,6 +7,13 @@
 :root {
   --color-primary: #244d3f;
   --color-primary-content: #ffffff;
+  --color-neutral: #000000;
+  --color-base-200: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
 }
 
 body {
@@ -14,6 +21,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  background-color: var(--color-base-200);
 }
 
 .container {

@@ -20,7 +20,7 @@ const Footer = () => {
         </p>
 
         <div>
-          <label className="text-lg font-medium block text-center mb-2 text-primary-content">
+          <label className="text-lg font-medium block text-center mb-3 text-primary-content">
             Social Links
           </label>
 

@@ -6,7 +6,7 @@ const MainLayout = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="py-20 px-3 flex flex-col gap-5 container">
         <Outlet />
       </main>
       <Footer />
