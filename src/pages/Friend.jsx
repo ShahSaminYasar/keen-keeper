@@ -31,7 +31,7 @@ const Friend = () => {
     ]);
 
     toast.success(
-      `Added to timeline: ${type?.slice(0, 1)?.toUpperCase()}${type?.slice(1)} with ${name}`,
+      `${type?.slice(0, 1)?.toUpperCase()}${type?.slice(1)} added with ${name}`,
     );
   };
 

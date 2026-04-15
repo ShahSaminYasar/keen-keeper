@@ -29,3 +29,13 @@ body {
   max-width: 1440px;
   margin: 0 auto;
 }
+
+.recharts-legend-wrapper {
+  bottom: -20px !important;
+}
+.recharts-surface {
+  border-radius: 50% !important;
+}
+.recharts-legend-item-text {
+  text-transform: capitalize;
+}

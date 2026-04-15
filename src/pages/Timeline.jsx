@@ -37,7 +37,7 @@ const Timeline = () => {
             }
           }),
       );
-    }, 180);
+    }, 330);
 
     return () => clearTimeout(timer);
   }, [filterType, filterSortDate, timeline, searchQuery]);
