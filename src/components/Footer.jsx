@@ -28,20 +28,20 @@ const Footer = () => {
             <a
               href="https://www.instagram.com/shah_samin_yasar"
               target="_blank"
-              className="bg-white text-black w-9 aspect-square grid place-content-center rounded-full"
+              className="bg-white hover:bg-pink-600 text-black hover:text-white transition-all duration-150 w-9 aspect-square grid place-content-center rounded-full"
             >
               <InstagramLogoIcon className="size-4.5" weight={"fill"} />
             </a>
             <a
               href="https://www.facebook.com/shahsaminyasar"
               target="_blank"
-              className="bg-white text-black w-9 aspect-square grid place-content-center rounded-full"
+              className="bg-white hover:bg-blue-600 text-black hover:text-white transition-all duration-150 w-9 aspect-square grid place-content-center rounded-full"
             >
               <FacebookLogoIcon className="size-4.5" weight={"fill"} />
             </a>
             <a
               href="#"
-              className="bg-white text-black w-9 aspect-square grid place-content-center rounded-full"
+              className="bg-white hover:bg-black text-black hover:text-white transition-all duration-150 w-9 aspect-square grid place-content-center rounded-full"
             >
               <XLogoIcon className="size-4.5" weight={"fill"} />
             </a>
@@ -49,10 +49,10 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="container pt-10 flex items-center justify-between font-light">
+      <div className="container pt-10 flex flex-col gap-3 md:flex-row items-center justify-center md:justify-between font-light">
         <span>&copy; 2026 KeenKeeper. All rights reserved.</span>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 md:gap-8">
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
           <a href="#">Cookies</a>

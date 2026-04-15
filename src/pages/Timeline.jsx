@@ -111,14 +111,25 @@ const Timeline = () => {
           filteredTimeline?.map((item, index) => (
             <div
               key={`${index}_${item?.id}`}
-              className="w-full bg-base-100 border border-base-300/50 p-4 rounded-md flex items-center gap-3"
+              className="w-full bg-base-100 border border-base-300/50 p-4 rounded-md flex items-center gap-4"
             >
               <span className="text-3xl">
-                {item?.type === "call"
+                <img
+                  src={
+                    item?.type === "call"
+                      ? "/assets/call.png"
+                      : item?.type === "text"
+                        ? "/assets/text.png"
+                        : "/assets/video.png"
+                  }
+                  className="w-8 aspect-square object-contain"
+                />
+
+                {/* {item?.type === "call"
                   ? "📞"
                   : item?.type === "text"
                     ? "💬"
-                    : "📹"}
+                    : "📹"} */}
               </span>
 
               <div>

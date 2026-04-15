@@ -12,7 +12,7 @@ const SummaryCards = ({ summaryPromise }) => {
         acc.onTrack++;
       }
 
-      if (friend?.status === "overdue" || friend?.status === "almost-due") {
+      if (friend?.status === "overdue" || friend?.status === "almost due") {
         acc.needAttention++;
       }
 

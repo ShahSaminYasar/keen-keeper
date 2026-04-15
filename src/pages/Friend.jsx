@@ -1,5 +1,6 @@
 import {
   ArchiveIcon,
+  ArrowLeftIcon,
   BellIcon,
   ChatDotsIcon,
   ClockCounterClockwiseIcon,
@@ -34,12 +35,10 @@ const Friend = () => {
       ...prev,
     ]);
 
-    toast.success(
-      `${type?.slice(0, 1)?.toUpperCase()}${type?.slice(1)} added with ${name}`,
-    );
+    toast.success(`Logged a ${type} with ${name}`);
   };
 
-  return (
+  return data?.id ? (
     <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5 -mt-5 fade">
       <section className="flex flex-col gap-3">
         {/* Friend Card */}
@@ -223,6 +222,22 @@ const Friend = () => {
           </div>
         </div>
       </section>
+    </div>
+  ) : (
+    <div className="flex flex-col items-center justify-center gap-3 py-15">
+      <img
+        src="/assets/no-user.jpg"
+        alt="Not found"
+        className="w-40 rounded-full object-cover"
+      />
+
+      <p className="block text-center text-sm font-medium mb-3">
+        No friend found for the specific ID.
+      </p>
+
+      <Link to="/" className="btn btn-primary">
+        <ArrowLeftIcon /> Back to Home
+      </Link>
     </div>
   );
 };

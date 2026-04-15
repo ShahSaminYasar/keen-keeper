@@ -2,7 +2,7 @@
 
 ## 📌 Description
 
-**KeenKeeper** is a responsive friendship management web application that helps users stay connected with their friends. It allows you to track interactions, monitor communication goals, and maintain meaningful relationships through an intuitive and visually engaging interface. Users can quickly log calls, texts, and video chats, and view their interaction history through a timeline and analytics dashboard.
+KeenKeeper is a responsive friendship management web application designed to help users maintain meaningful relationships. It enables users to track interactions, monitor communication goals, and log activities like calls, texts, and video chats. With a timeline view and analytics dashboard, users gain insights into their social habits and stay consistent in nurturing connections.
 
 ---
 
@@ -62,10 +62,10 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/[TODO]
+git clone https://github.com/ShahSaminYasar/keen-keeper
 
 # Navigate to the project folder
-cd [TODO]
+cd keen-keeper
 
 # Install dependencies
 npm install
@@ -76,4 +76,4 @@ npm run dev
 
 ## 🌐 Live Demo
 
-[TODO](https://github.com/ShahSaminYasar)
+[Click Here](https://github.com/ShahSaminYasar)

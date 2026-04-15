@@ -40,11 +40,11 @@ const router = createBrowserRouter([
         },
         Component: Friend,
       },
+      {
+        path: "*",
+        Component: NotFound,
+      },
     ],
-  },
-  {
-    path: "*",
-    Component: NotFound,
   },
 ]);
 
