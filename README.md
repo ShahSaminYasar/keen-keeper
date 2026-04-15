@@ -76,4 +76,4 @@ npm run dev
 
 ## 🌐 Live Demo
 
-[Click Here](https://github.com/ShahSaminYasar)
+[Click Here](https://ssy-keen-keeper.netlify.app)
