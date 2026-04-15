@@ -70,8 +70,8 @@ const Timeline = () => {
             className="select w-full md:w-44"
             onChange={(e) => setFilterSortDate(e.target.value)}
           >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
           </select>
         </div>
 
