@@ -1,10 +1,17 @@
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import Friends from "../sections/Friends";
 import Hero from "../sections/Hero";
+import { useLocation } from "react-router";
 
 const friendsPromise = fetch("/friends.json").then((res) => res.json());
 
 const Home = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <Hero friendsPromise={friendsPromise} />

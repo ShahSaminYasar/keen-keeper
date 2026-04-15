@@ -4,7 +4,7 @@ import SummaryCards from "../components/SummaryCards";
 
 const Hero = ({ friendsPromise }) => {
   return (
-    <section className="w-full flex flex-col items-center justify-center text-center gap-5">
+    <section className="w-full flex flex-col items-center justify-center text-center gap-5 fade">
       <h1 className="text-5xl font-bold text-neutral">
         Friends to keep close in your life
       </h1>

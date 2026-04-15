@@ -6,7 +6,7 @@ const Friends = ({ friendsPromise }) => {
   const data = use(friendsPromise);
 
   return (
-    <section>
+    <section className="fade">
       <h2 className="text-xl font-semibold text-neutral mb-3">Your Friends</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">

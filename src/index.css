@@ -30,6 +30,21 @@ body {
   margin: 0 auto;
 }
 
+.fade {
+  opacity: 0;
+  animation: fade-animation 0.2s linear forwards;
+}
+@keyframes fade-animation {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
 .recharts-legend-wrapper {
   bottom: -20px !important;
 }

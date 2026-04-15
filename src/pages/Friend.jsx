@@ -7,16 +7,20 @@ import {
   TrashIcon,
   VideoCameraIcon,
 } from "@phosphor-icons/react";
-import { Link, useLoaderData } from "react-router";
+import { Link, useLoaderData, useLocation } from "react-router";
 import SummaryCard from "../components/SummaryCard";
 import useMainContext from "../hooks/useMainContext";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const Friend = () => {
   const data = useLoaderData();
   const { timeline, setTimeline } = useMainContext();
+  const { pathname } = useLocation();
 
-  // TODO: Add on page load scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   // Functions
   const addToTimeline = (id, type, name, date) => {
@@ -36,7 +40,7 @@ const Friend = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5 -mt-5">
+    <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-5 -mt-5 fade">
       <section className="flex flex-col gap-3">
         {/* Friend Card */}
         <div className="bg-base-100 px-3 py-8 rounded-md shadow-sm flex flex-col gap-3 items-center justify-center text-center">
@@ -180,36 +184,42 @@ const Friend = () => {
           </div>
 
           <div className="w-full flex flex-col gap-0">
-            {timeline
-              ?.filter((item) => item?.id === data?.id)
-              ?.map((item, index) => (
-                <div
-                  key={`${index}_${item?.id}`}
-                  className="w-full flex items-center justify-between gap-2 px-3 py-4 border-b border-neutral/10 last:border-b-0  text-neutral"
-                >
-                  <div className="flex items-center gap-2">
-                    {item?.type === "call" ? (
-                      <PhoneCallIcon size={30} weight="bold" />
-                    ) : item?.type === "text" ? (
-                      <ChatDotsIcon size={30} weight="bold" />
-                    ) : (
-                      <VideoCameraIcon size={30} weight="bold" />
-                    )}
+            {timeline?.length > 0 ? (
+              timeline
+                ?.filter((item) => item?.id === data?.id)
+                ?.map((item, index) => (
+                  <div
+                    key={`${index}_${item?.id}`}
+                    className="w-full flex items-center justify-between gap-2 px-3 py-4 border-b border-neutral/10 last:border-b-0  text-neutral"
+                  >
+                    <div className="flex items-center gap-2">
+                      {item?.type === "call" ? (
+                        <PhoneCallIcon size={30} weight="bold" />
+                      ) : item?.type === "text" ? (
+                        <ChatDotsIcon size={30} weight="bold" />
+                      ) : (
+                        <VideoCameraIcon size={30} weight="bold" />
+                      )}
 
-                    <span className="text-lg font-normal">
-                      {item?.type?.slice(0, 1)?.toUpperCase()}
-                      {item?.type?.slice(1)} with {item?.name}
+                      <span className="text-lg font-normal">
+                        {item?.type?.slice(0, 1)?.toUpperCase()}
+                        {item?.type?.slice(1)} with {item?.name}
+                      </span>
+                    </div>
+                    <span>
+                      {new Date(item?.date).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
                     </span>
                   </div>
-                  <span>
-                    {new Date(item?.date).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </span>
-                </div>
-              ))}
+                ))
+            ) : (
+              <p className="block text-center text-sm font-medium py-15">
+                Nothing found
+              </p>
+            )}
           </div>
         </div>
       </section>

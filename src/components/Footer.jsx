@@ -26,13 +26,15 @@ const Footer = () => {
 
           <div className="flex flex-row flex-nowrap gap-3 items-center">
             <a
-              href="#"
+              href="https://www.instagram.com/shah_samin_yasar"
+              target="_blank"
               className="bg-white text-black w-9 aspect-square grid place-content-center rounded-full"
             >
               <InstagramLogoIcon className="size-4.5" weight={"fill"} />
             </a>
             <a
-              href="#"
+              href="https://www.facebook.com/shahsaminyasar"
+              target="_blank"
               className="bg-white text-black w-9 aspect-square grid place-content-center rounded-full"
             >
               <FacebookLogoIcon className="size-4.5" weight={"fill"} />

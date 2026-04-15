@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import useMainContext from "../hooks/useMainContext";
+import { useLocation } from "react-router";
 
 const Timeline = () => {
   const { timeline } = useMainContext();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   const [filteredTimeline, setFilteredTimeline] = useState([]);
   const [filterType, setFilterType] = useState("");
@@ -43,7 +49,7 @@ const Timeline = () => {
   }, [filterType, filterSortDate, timeline, searchQuery]);
 
   return (
-    <div className="flex flex-col gap-5 w-full max-w-6xl mx-auto">
+    <div className="flex flex-col gap-5 w-full max-w-6xl mx-auto fade">
       <h2 className="text-4xl font-semibold text-neutral">Timeline</h2>
 
       <section className="flex flex-col-reverse md:flex-row md:items-center flex-wrap gap-3">
